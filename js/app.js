@@ -25,11 +25,22 @@ function shuffle(array) {
     return array;
 }
 
-let allCards = document.querySelectorAll('.card');
+var allCards = document.querySelectorAll('.card');
+var openCards = [];
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
+        openCards.push(card);
         card.classList.add('open','show');
+        console.log('Open Cards:', openCards.length);
+
+        if (openCards.length == 2) {
+            setTimeout(function() {
+                openCards.forEach(function(card) {
+                    card.classList.remove('open','show');
+                });
+            }, 1000);
+        }    
     });
 });
 /*
