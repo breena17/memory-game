@@ -30,6 +30,8 @@ var openCards = [];
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
+
+    if (!card.classList.contains('open') || !card.classList.contains('show')) {    
         openCards.push(card);
         card.classList.add('open','show');
         console.log('Open Cards:', openCards.length);
@@ -39,8 +41,11 @@ allCards.forEach(function(card) {
                 openCards.forEach(function(card) {
                     card.classList.remove('open','show');
                 });
+                openCards=[];
             }, 1000);
         }    
+    }
+
     });
 });
 /*
