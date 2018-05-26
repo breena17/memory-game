@@ -11,7 +11,7 @@ let cards = ['fa-diamond','fa-diamond',
              'fa-bomb','fa-bomb',];
         
 function generateCard(...cards) {
-    let generateCard = `<li class="card"><i class="fa ${cards}"></i></li>`;
+    let generateCard = `<li class="card" data-card="${cards}"><i class="fa ${cards}"></i></li>`;
     return generateCard;
 }
 
@@ -57,15 +57,25 @@ allCards.forEach(function(card) {
     if (!card.classList.contains('open') || !card.classList.contains('show')) {    
         openCards.push(card);
         card.classList.add('open','show');
-        console.log('Open Cards:', openCards.length);
-
+        
         if (openCards.length == 2) {
+            if (openCards[0].dataset.card == openCards[1].dataset.card) {
+                openCards[0].classList.add('match');
+                openCards[0].classList.add('open');
+                openCards[0].classList.add('show');
+                openCards[1].classList.add('match');
+                openCards[1].classList.add('open');
+                openCards[1].classList.add('show');
+            } else {
+
+            // no match, hide
             setTimeout(function() {
                 openCards.forEach(function(card) {
                     card.classList.remove('open','show');
                 });
                 openCards=[];
             }, 1000);
+            }
         }    
     }
 
