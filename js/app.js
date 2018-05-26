@@ -42,42 +42,51 @@ function initGame() {
     var cardHTML = shuffle(cards).map(function(card) {
         return generateCard(card);
     });
+    
+
     deck.innerHTML = cardHTML.join('');
 } 
 
 initGame();
-
-
+var moves=0;
+var moveCounter = document.querySelector('.moves');
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
+
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
 
-    if (!card.classList.contains('open') || !card.classList.contains('show')) {    
-        openCards.push(card);
-        card.classList.add('open','show');
-        
-        if (openCards.length == 2) {
-            if (openCards[0].dataset.card == openCards[1].dataset.card) {
-                openCards[0].classList.add('match');
-                openCards[0].classList.add('open');
-                openCards[0].classList.add('show');
-                openCards[1].classList.add('match');
-                openCards[1].classList.add('open');
-                openCards[1].classList.add('show');
-            } else {
-
-            // no match, hide
-            setTimeout(function() {
-                openCards.forEach(function(card) {
-                    card.classList.remove('open','show');
-                });
-                openCards=[];
-            }, 1000);
-            }
-        }    
-    }
+        if (!card.classList.contains('open') || !card.classList.contains('show')) {    
+            openCards.push(card);
+            card.classList.add('open','show');
+            
+            if (openCards.length == 2) {
+                if (openCards[0].dataset.card == openCards[1].dataset.card) {
+                    openCards[0].classList.add('match');
+                    openCards[0].classList.add('open');
+                    openCards[0].classList.add('show');
+                    openCards[1].classList.add('match');
+                    openCards[1].classList.add('open');
+                    openCards[1].classList.add('show');
+                    openCards=[];
+                } else {
+                    // no match, hide
+                    setTimeout(function() {
+                        openCards.forEach(function(card) {
+                            card.classList.remove('open','show');
+                        });
+                        openCards=[];
+                    }, 1000);
+                }
+                
+                moves +=1;
+                moveCounter.innerHTML = moves;
+                
+                
+                
+            }    
+        }
 
     });
 });
