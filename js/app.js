@@ -38,26 +38,27 @@ function shuffle(array) {
 }
 
 function initGame() {
-    var deck = document.querySelector('.deck');
-    var cardHTML = shuffle(cards).map(function(card) {
+    let deck = document.querySelector('.deck');
+    let cardHTML = shuffle(cards).map(function(card) {
         return generateCard(card);
     });
     
-
+    
     deck.innerHTML = cardHTML.join('');
 } 
 
-initGame();
-var moves=0;
-var moveCounter = document.querySelector('.moves');
-var allCards = document.querySelectorAll('.card');
-var openCards = [];
 
+let moves=0;
+let moveCounter = document.querySelector('.moves');
+
+
+
+initGame();
 //timer
-var second = 0;
-var minute = 0;
-var timer = document.querySelector('.timer');
-var interval;
+let second = 0;
+let minute = 0;
+let timer = document.querySelector('.timer');
+let interval;
 function initTimer() {
     interval = setInterval(function() {
         timer.innerHTML = `${minute} Minutes ${second} Seconds`;
@@ -70,6 +71,8 @@ function initTimer() {
     },1000);
 }
 
+let allCards = document.querySelectorAll('.card');
+let openCards = [];
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
