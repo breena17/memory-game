@@ -53,40 +53,61 @@ var moveCounter = document.querySelector('.moves');
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
 
+//timer
+var second = 0;
+var minute = 0;
+var timer = document.querySelector('.timer');
+var interval;
+function initTimer() {
+    interval = setInterval(function() {
+        timer.innerHTML = `${minute} Minutes ${second} Seconds`;
+        second ++;
+        if(second == 60) {
+            minute++;
+            second = 0;
+        }
+        
+    },1000);
+}
+
 
 allCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
-
-        if (!card.classList.contains('open') || !card.classList.contains('show')) {    
-            openCards.push(card);
-            card.classList.add('open','show');
-            
-            if (openCards.length == 2) {
-                if (openCards[0].dataset.card == openCards[1].dataset.card) {
-                    openCards[0].classList.add('match');
-                    openCards[0].classList.add('open');
-                    openCards[0].classList.add('show');
-                    openCards[1].classList.add('match');
-                    openCards[1].classList.add('open');
-                    openCards[1].classList.add('show');
-                    openCards=[];
-                } else {
-                    // no match, hide
-                    setTimeout(function() {
-                        openCards.forEach(function(card) {
-                            card.classList.remove('open','show');
-                        });
+        
+            if (!card.classList.contains('open') || !card.classList.contains('show')) {    
+                openCards.push(card);
+                card.classList.add('open','show');
+                
+                if (openCards.length == 2) {
+                    if (openCards[0].dataset.card == openCards[1].dataset.card) {
+                        openCards[0].classList.add('match');
+                        openCards[0].classList.add('open');
+                        openCards[0].classList.add('show');
+                        openCards[1].classList.add('match');
+                        openCards[1].classList.add('open');
+                        openCards[1].classList.add('show');
                         openCards=[];
-                    }, 1000);
-                }
-                
-                moves +=1;
-                moveCounter.innerHTML = moves;
-                
-                
-                
-            }    
-        }
+                    } else {
+                        // no match, hide
+                        setTimeout(function() {
+                            openCards.forEach(function(card) {
+                                card.classList.remove('open','show');
+                            });
+                            openCards=[];
+                        }, 1000);
+                    }
+                    
+                    moves +=1;
+                    moveCounter.innerHTML = moves;
+                    /*if (moves==1) {
+                        second = 0;
+                        minute = 0;
+                        initTimer();
+                    }
+                    */
+                    
+                }    
+            }
 
     });
 });
