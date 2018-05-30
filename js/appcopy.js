@@ -49,19 +49,7 @@ function initGame() {
 
 let moves=0;
 let moveCounter = document.querySelector('.moves');
-let stars= document.getElementsByClassName("stars");
 
-function reduceStars() {
-    moves +=1;
-    moveCounter.innerHTML = moves;
-    
-    if (moves > 14 && moves <=18) {
-        document.getElementsByClassName("fa-star")[2].style.color='black';
-    }
-    else if (moves > 18) {
-        document.getElementsByClassName('fa-star')[1].style.color='black';
-    }
-}
 
 
 
@@ -123,8 +111,21 @@ allCards.forEach(function(card) {
                             openCards=[];
                         }, 1000);
                     }
+                    moves +=1;
+                    moveCounter.innerHTML = moves;
+                    function reduceStars() {
+                    moves +=1;
+                    moveCounter.innerHTML = moves;
+                    let moves = document.getElementsByClassName("moves");
+                    let stars= document.getElementsByClassName("stars");
+                    if (moves > 2 && moves <=16) {
+                        stars.getElementsByClassName("fa-star")[2].style.color='black';
+                    }
+                    else if (moves > 16) {
+                        stars.getElementsByClassName('fa-star')[1].style.color='black';
+                    }
+                }
                     
-                    reduceStars();
                     
                 }    
             }
@@ -142,10 +143,6 @@ allCards.forEach(function(card) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-
-
-
- 
 /*
  //// Lower the star rating by one, and hide the last star by adding the class 'dimmed'
 function lowerStars() {
