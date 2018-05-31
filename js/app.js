@@ -46,7 +46,7 @@ function initGame() {
     
     deck.innerHTML = cardHTML.join('');
 }
-
+//move counter and removes stars
 let moves=0;
 let moveCounter = document.querySelector('.moves');
 let stars= document.getElementsByClassName("stars");
@@ -72,7 +72,7 @@ let minute = 0;
 let timer = document.querySelector('.timer');
 let interval;
 
- function newFunction() {
+ function resetTimer() {
     let timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
     clearInterval(interval);
@@ -89,7 +89,11 @@ function initTimer() {
         }
         
     },1000);
+    
 }
+
+
+
 
 
 let allCards = document.querySelectorAll('.card');
@@ -125,12 +129,38 @@ allCards.forEach(function(card) {
                     }
                     
                     reduceStars();
-                    
+                    congrats();
                 }    
             }
 
     });
 });
+
+//modal
+let matchedCards = document.getElementsByClassName('match');
+let modal = document.getElementById('myModal');
+let span = document.querySelector('.close').addEventListener('click',close);
+let button = document.querySelector('.button').addEventListener('click',replay);
+function congrats() {
+    if (matchedCards.length === 16) {
+        clearInterval(interval);
+        
+        finalTime = `Completed In: ${minute} Minutes ${second} Seconds`;
+        modal.style.display = 'block';
+        moves = `Total Moves: ${moves}`;
+        
+        let starRating =document.querySelector('.stars').innerHTML;
+        document.getElementById('starRating').innerHTML=starRating;
+        document.getElementById('totalMoves').innerHTML=moves;
+        document.getElementById('totalTime').innerHTML=finalTime;
+    }
+}
+function close() {
+    modal.style.display = "none";
+}
+function replay() {
+    modal.style.display ="none";
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -143,31 +173,3 @@ allCards.forEach(function(card) {
  */
 
 
-
-
- 
-/*
- //// Lower the star rating by one, and hide the last star by adding the class 'dimmed'
-function lowerStars() {
-    starRating--;
-    tryCounter = 0;
-    const stars = document.querySelector(`.fa-star:last-child`);
-    stars[starRating].className = `fa fa-star dimmed`;
-}
-*/
-
-
-/*
-function reduceStars() {
-    const stars = document.getElementsByClassName('fa-star');
-    
-
-    if (moves>5) {
-        stars.removeChild(stars.lastChild);
-    } 
-  }
-  
-  if (moves > 2) {
-    stars.getElementsByClassName(".fa-star")[2].style.color='black';
-  }
-  */

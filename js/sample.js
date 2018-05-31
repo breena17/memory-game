@@ -147,7 +147,7 @@ initGame();
 
 /*
 Modal- tutorial from https://www.w3schools.com/howto/howto_css_modals.asp
-*/
+
 
 var modal = document.querySelector('.modal');
 function winGame() {
@@ -167,4 +167,4 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+}*/
