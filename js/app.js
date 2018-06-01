@@ -63,20 +63,12 @@ function reduceStars() {
     }
 }
 
-
-
 initGame();
 //timer
 let second = 0;
 let minute = 0;
 let timer = document.querySelector('.timer');
 let interval;
-
- function resetTimer() {
-    let timer = document.querySelector(".timer");
-    timer.innerHTML = "0 mins 0 secs";
-    clearInterval(interval);
-}
 
 
 function initTimer() {
@@ -160,7 +152,28 @@ function close() {
 }
 function replay() {
     modal.style.display ="none";
-}
+        //clear moves
+        moves = 0;
+        moveCounter.innerHTML = moves;
+        //clear timer
+        let timer = document.querySelector(".timer");
+        timer.innerHTML = "0 Minutes 0 Seconds";
+        clearInterval(interval);
+        //clear stars
+        let stars= document.getElementsByClassName("stars");
+        document.getElementsByClassName("fa-star")[1].style.color='gold';
+        document.getElementsByClassName("fa-star")[2].style.color='gold';
+        //reset event listner
+        //let allCards=document.querySelectorAll('.card');
+        //allCards[0].classList.remove('match')
+        //allCards[0].classList.remove('open')
+        //allCards[0].classList.remove('show');
+        initGame();
+        
+
+    }
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
