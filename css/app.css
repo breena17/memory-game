@@ -176,3 +176,122 @@ h1 {
     padding: 12px 28px;
     cursor: pointer;
 }
+/* responsive */
+@media screen and (max-width:450px) {
+h1 {
+    text-align: center;
+}
+}
+@media screen and (min-width:900px) and (max-width:1045px) {
+.score-panel {
+    width:40%;
+}
+}
+@media screen and (min-width:730px) and (max-width:899px) {
+.score-panel {
+    width:50%;
+}
+.deck {
+    min-height: 666px;
+    width:75%;
+}
+}
+@media screen and (min-width:575px) and (max-width:729px) {
+.score-panel {
+    width:60%;
+}
+.deck {
+    width:80%;
+    min-height: 600px;
+}
+}
+@media screen and (min-width:500px) and (max-width:574px) {
+    .score-panel {
+        width:70%;
+    }
+    .deck {
+        width:80%;
+        min-height: 450px;
+        padding:10px 20px 10px 20px;
+    }
+    .deck .card {
+        width:80px;
+        height:80px;
+    }
+}
+@media screen and (min-width:400px) and (max-width:499px) {
+    .score-panel {
+        width:80%;
+    }
+    .deck {
+        width:80%;
+        min-height: 400px;
+        padding: 10px 20px 10px 20px;
+    }
+    .deck .card {
+        width:70px;
+        height:70px;
+    }
+}
+@media screen and (max-width:399px) {
+    .score-panel {
+        width:100%;
+    }
+    .deck {
+        width:90%;
+        min-height: 400px;
+        padding: 10px 20px 10px 20px;
+    }
+    .deck .card {
+        width:60px;
+        height:60px;
+    }
+}
+@media screen and (min-width:377px) and (max-width:487px) {
+    .deck .card {
+        width:70px;
+        height:70px;
+    }
+}
+@media screen and (min-width:488px) and (max-width:549px) {
+    .deck .card {
+        width: 80px;
+        height:80px;
+    }
+    
+}
+@media screen and (min-width:550px) and (max-width:642px) {
+    .deck .card {
+        width: 90px;
+        height:90px;
+    }
+    
+}
+@media screen and (min-width:643px) and (max-width:704px) {
+    .deck .card {
+        width: 100px;
+        height:100px;
+    }
+    
+}
+@media screen and (min-width:705px) and (max-width:766px) {
+    .deck .card {
+        width: 110px;
+        height:110px;
+    }
+    
+}
+@media screen and (min-width:767px) and (max-width:829px) {
+    .deck .card {
+        width: 120px;
+        height:120px;
+    }
+    
+}
+@media screen and (min-width:830px) and (max-width:899px) {
+    .deck .card {
+        width: 125px;
+        height:125px;
+    }
+    
+}
