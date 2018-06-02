@@ -89,6 +89,22 @@ function initTimer() {
     
 }
 initGame();
+function restartTimer() {
+    let second = 0;
+    let minute = 0;
+    let timer = document.querySelector('.timer');
+    let interval;
+    interval = setInterval(function() {
+        timer.innerHTML = `${minute} Minutes ${second} Seconds`;
+        second ++;
+        if(second == 60) {
+            minute++;
+            second = 0;
+        }
+        
+    },1000);
+    
+}
 
 
 function refreshListeners() {
@@ -161,17 +177,20 @@ function replay() {
         moves = 0;
         moveCounter.innerHTML = moves;
         //clear timer
+        let minute=0;
+        let second=0;
         let timer = document.querySelector(".timer");
-        timer.innerHTML = "0 Minutes 0 Seconds";
+        timer.innerHTML =`${minute} Minutes ${second} Seconds`;
         clearInterval(interval);
         //clear stars
         let stars= document.getElementsByClassName("stars");
         document.getElementsByClassName("fa-star")[1].style.color='gold';
         document.getElementsByClassName("fa-star")[2].style.color='gold';
         //reset timer onclick
-        document.querySelector('.deck').setAttribute('onclick','clearInterval(interval); initTimer(); this.onclick=null');
+        document.querySelector('.deck').setAttribute('onclick','clearInterval(interval); restartTimer(); this.onclick=null');
         
         initGame();
+        
         
 
     }
