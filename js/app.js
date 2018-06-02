@@ -45,6 +45,8 @@ function initGame() {
     
     
     deck.innerHTML = cardHTML.join('');
+    refreshListeners();
+    
 }
 //move counter and removes stars
 let moves=0;
@@ -86,7 +88,7 @@ function initTimer() {
 
 
 
-
+function refreshListeners() {
 
 let allCards = document.querySelectorAll('.card');
 let openCards = [];
@@ -127,7 +129,7 @@ allCards.forEach(function(card) {
 
     });
 });
-
+}
 //modal
 let matchedCards = document.getElementsByClassName('match');
 let modal = document.getElementById('myModal');
@@ -164,7 +166,7 @@ function replay() {
         document.getElementsByClassName("fa-star")[1].style.color='gold';
         document.getElementsByClassName("fa-star")[2].style.color='gold';
         //reset event listner
-        //let allCards=document.querySelectorAll('.card');
+        //git let allCards=document.querySelectorAll('.card');
         //allCards[0].classList.remove('match')
         //allCards[0].classList.remove('open')
         //allCards[0].classList.remove('show');
